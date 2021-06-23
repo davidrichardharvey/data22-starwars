@@ -16,7 +16,8 @@ You have until Friday lunchtime.
 - Use good coding principles.  That means testing, appropriate comments and good naming conventions.
 - Follow PEP 8
 - Create a job board in Trello or similar to keep track of your user stories.  Provide a link to that job board in your version of this README.
-- Your code should utilise functions *at the very least!*
+- Your code should utilise functional programming OR object-oriented programming
+- Use Test Driven Development: write your tests first
 
 ## Using this repo
 
