@@ -2,8 +2,8 @@ import pymongo
 from pprint import pprint
 import requests
 
-# response = requests.get("http https://swapi.dev/api/starships")
-# print(response.json())
+response = requests.get("https://swapi.dev/api/starships")
+pprint(response.json())
 
-client = pymongo.MongoClient()
-db = client['starwars']
+# client = pymongo.MongoClient()
+# db = client['starwars']
