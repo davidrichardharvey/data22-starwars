@@ -15,14 +15,11 @@ You have until 9am on Tuesday.
 
 - Use good coding principles.  That means testing, appropriate comments, good naming conventions and handling errors gracefully.
 - Follow PEP 8
-- Create a job board in Trello or similar to keep track of your user stories.  Provide a link to that job board in your version of this README.
 - Your code should utilise functional programming OR object-oriented programming
 - Use Test Driven Development: write your tests first
 
-## Using this repo
+## The link to Trello
 
-- Branch off from main.
-- Use your own name for the name of the branch (e.g. mine would be DavidHarvey - please copy this format).
-- Make sure you commit and push to the remote repo frequently to keep your work up-to-date.
-- The gitignore should catch most unnecessary project files, but do pay attention to what you are adding to the repo.
-- Replace this README with an appropriate README for your project (including a link to your job board).
+- Here is a link to my job board on Trello: https://trello.com/b/9rFM9Xfm/using-starwars-starships-collection
+
+
