@@ -13,7 +13,7 @@ You have until 9am on Tuesday.
 
 ## Requirements
 
-- Use good coding principles.  That means testing, appropriate comments and good naming conventions.
+- Use good coding principles.  That means testing, appropriate comments, good naming conventions and handling errors gracefully.
 - Follow PEP 8
 - Create a job board in Trello or similar to keep track of your user stories.  Provide a link to that job board in your version of this README.
 - Your code should utilise functional programming OR object-oriented programming
