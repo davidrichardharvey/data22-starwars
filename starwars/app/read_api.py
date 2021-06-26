@@ -1,5 +1,4 @@
 import requests
-from pprint import pprint
 
 
 def read_api(url):
