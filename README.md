@@ -1,4 +1,4 @@
-# Data 22 Star Wars Project
+# Data 22 Star Wars Project (Josh Blackmore)
 
 
 ## Usage
@@ -11,3 +11,4 @@ part of this small project.
 
 ## Other Information and Links
 Trello Board: https://trello.com/b/pwNxR3rf/starwars-mongodb-api-project
+My Git: https://github.com/Kcorb0
