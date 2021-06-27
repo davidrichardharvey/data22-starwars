@@ -1,4 +1,7 @@
-## Tobi Jones Trello link: https://trello.com/b/koNM2yq2/star-wars
+## Tobi Jones 
+
+## Trello link: https://trello.com/b/koNM2yq2/star-wars
+
 
 # Data 22 Star Wars Project
 
