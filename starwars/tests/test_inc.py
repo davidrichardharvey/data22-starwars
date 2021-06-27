@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+from starwars.app.inc import inc
 """
 Created on Fri Jun 25 15:44:10 2021
 
 @author: Andrew Rothwell
+
 """
 
 '''
@@ -15,13 +17,12 @@ expected answers I can assume I have correctly implemented these unit tests
 using the PyTest module.
 '''
 
-from starwars.app.inc import inc
 
 def test_incPass():
-    
-    assert inc(3) == 4
-    
-def test_incFail():
-    
-    assert inc(3) == 5
 
+    assert inc(3) == 4
+
+
+def test_incFail():
+
+    assert inc(3) == 5

@@ -10,5 +10,6 @@ An arbitrary function to run alongside the "test_inc" file in the "tests"
 module.
 '''
 
+
 def inc(x):
     return x + 1
