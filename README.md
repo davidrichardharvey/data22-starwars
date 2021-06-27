@@ -1,3 +1,6 @@
+My job board --> https://trello.com/b/0VLCxBpJ/mini-project
+
+
 # Data 22 Star Wars Project
 
 ## Instructions
