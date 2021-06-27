@@ -5,6 +5,8 @@ from pprint import pprint
 
 client = pymongo.MongoClient()
 sw_db = client['starwars']
+starships = sw_db["starships"]   # starwars.starships
+characters = sw_db["characters"] # starwars.characters
 
 
 def request_url(url):
@@ -18,12 +20,12 @@ def create_starships_collection():
         print("Starships collection has been created.")
     else:
         # Drop the collection so that it is remade in the next stage, this avoids data duplication
-        sw_db["starships"].drop()
+        starships.drop()
         print("Starships collection already exists.")
 
 
 def insert_starships():
-
+    # Gets starship information from the starwars api url and inserts into starships collection
     starships_json = request_url("https://swapi.dev/api/starships/")
 
     for i in starships_json["results"]:
@@ -33,22 +35,14 @@ def insert_starships():
 
 
 def replace_pilot_info():
-    starships = sw_db["starships"]
-    characters = sw_db["characters"]
-
+    # Replaces the pilot urls in starships with object ids from characters
     for i in starships.find({}, {"_id": 1, "name": 1, "pilots": 1}):
-        pilot_names = []
-        pilot_obj_ids = []
         if i["pilots"] != []:
             # Make list of pilot names
-            for pilot in i["pilots"]:
-                pilot_name = request_url(pilot)["name"]
-                pilot_names.append(pilot_name)
-            
-            for name in pilot_names:
-                pilot_obj_id = next(characters.find({"name": name}))["_id"]
-                pilot_obj_ids.append(pilot_obj_id)
-
+            pilot_names = [request_url(pilot)["name"] for pilot in i["pilots"]]
+            # Make a list of the pilot object ids from the characters collection
+            pilot_obj_ids = [next(characters.find({"name": name}))["_id"] for name in pilot_names]
+            # Update query to change the pilots array containing urls to an array containing object ids
             sw_db.starships.update_one({"_id": i["_id"]}, {"$set":{"pilots": pilot_obj_ids}})
 
 
