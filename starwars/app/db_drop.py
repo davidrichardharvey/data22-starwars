@@ -6,4 +6,6 @@ db = client['starwars']
 
 def db_drop():
     db.starships.drop()
-    return db.starships.find_many()
+    starship_dict = db.starships.find()
+    return [ship for ship in starship_dict]
+
