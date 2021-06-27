@@ -6,7 +6,7 @@ import pymongo
 client=pymongo.MongoClient()
 db=client['starwars']
 
-class find_starships:
+class starships:
 
     def __init__(self):
         self.s_ships = None
@@ -14,6 +14,7 @@ class find_starships:
         #An empty list for all starships
         self.total_results = []
         self.page_count=1
+        self.pilots = None
 
     def find_page_count(self):
         response = requests.get(self.url)
@@ -37,13 +38,11 @@ class find_starships:
         return(self.total_results)
 
 
-    #def get_ships_pilot(selfs):
+    def get_ships_pilot(self):
+
+        self.pilots = [i for i in self.total_results if not (i['pilots'] == [])]
+        print(self.pilots)
 
 
-
-
-Obj = find_starships()
-Obj.find_page_count()
-print(Obj.get_api())
 
 
