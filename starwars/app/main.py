@@ -1,12 +1,15 @@
+from bson.objectid import ObjectId
 import pymongo
 import requests
 from pprint import pprint
 
-get_api = requests.get("https://swapi.dev/api/")
-
 client = pymongo.MongoClient()
 sw_db = client['starwars']
 
+
+def request_url(url):
+    # Quick way to get api from url into json format
+    return requests.get(url).json()
 
 def create_starships_collection():
     # Create the new updated starships collection
@@ -21,7 +24,7 @@ def create_starships_collection():
 
 def insert_starships():
 
-    starships_json = requests.get("https://swapi.dev/api/starships/").json()
+    starships_json = request_url("https://swapi.dev/api/starships/")
 
     for i in starships_json["results"]:
         ss_name = i["name"]
@@ -29,6 +32,29 @@ def insert_starships():
         print(f"Inserted document for {ss_name}")
 
 
+def replace_pilot_info():
+    starships = sw_db["starships"]
+    characters = sw_db["characters"]
+
+    for i in starships.find({}, {"_id": 1, "name": 1, "pilots": 1}):
+        pilot_names = []
+        pilot_obj_ids = []
+        if i["pilots"] != []:
+            # Make list of pilot names
+            for pilot in i["pilots"]:
+                pilot_name = request_url(pilot)["name"]
+                pilot_names.append(pilot_name)
+            
+            for name in pilot_names:
+                pilot_obj_id = next(characters.find({"name": name}))["_id"]
+                pilot_obj_ids.append(pilot_obj_id)
+
+           
+            sw_db.starships.update_one({"_id": i["_id"]}, {"$set":{"pilots": pilot_obj_ids}})
+
+
+
 if __name__ == "__main__":
     create_starships_collection()
     insert_starships()
+    replace_pilot_info()
