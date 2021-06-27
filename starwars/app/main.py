@@ -49,7 +49,6 @@ def replace_pilot_info():
                 pilot_obj_id = next(characters.find({"name": name}))["_id"]
                 pilot_obj_ids.append(pilot_obj_id)
 
-           
             sw_db.starships.update_one({"_id": i["_id"]}, {"$set":{"pilots": pilot_obj_ids}})
 
 
