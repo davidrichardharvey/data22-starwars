@@ -12,10 +12,8 @@ def test_starship_pull_request():
 
     # Tests that the "status_code" function in the "starship_pull_request.py"
     # file is correctly returning the status_code "200"
-
     assert status_code() == 200
 
     # Test that asserts whether the data pulled from the swapi website has
     # been correctly pulled and formatted in a 36 length list of dictionaries.
-
     assert len(transform_starship_data()) == 36

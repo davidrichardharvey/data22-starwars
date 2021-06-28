@@ -2,19 +2,67 @@
 
 ## Trello Board Link: https://trello.com/b/wpmmxatO/data22-starwars
 
+Application Info
+
+	starship_pull_request.py
+		
+		status_code()
+		# Returns the HTTP status code from the website to ensure the resource is open
+		# to requests.
+	
+		transform_starship_data()
+		# Pulls all starship data from the swapi, loads it into a usable format, and
+		# returns it as a list.
+	
+	starship_connect_objectID_characters.py
+
+		starship_connect_url_characters()
+		# Further formats the data sent from the swapi by replacing all urls in the
+		# "pilots" field with their respective names.
+		
+		starship_connect_objectID_characters()
+		# Uses the formatted "pilots" field from starship_connect_url_characters() to
+		# cross reference the "characters" mongoDB database and assign the respective
+		# objectID.
+		
+	starship_collection_insert.py
+		
+		collection_insert()
+		# Inserts the fully formatted swapi starship data into a MongoDB collection.
+
+
+Testing Info
+	
+	test_starship_pull_request.py
+	
+		test_starship_pull_request()
+		# Tests that the "status_code" function in the "starship_pull_request.py"
+		# file is correctly returning the status_code "200"
+
+		# Test that asserts whether the data pulled from the swapi website has
+		# been correctly pulled and formatted in a 36 length list of dictionaries.
+	
+	test_starship_connect_objectID_characters.py
+	
+		test_starship_connect_url_characters()
+		# Tests that all urls have been replaced with valid character names from the
+		# swapi.
+		
+		test_starship_connect_objectID_characters()
+		# Tests that the pilot object ids are in the list of object ids from the
+		# characters database.
+	
+	test_starship_collection_insert.py
+	
+		test_starship_collection_length()
+		# Tests if the collection inserted into MongoDB is 36 fields long.
+
+	run_all_tests.py
+	#debugging file used to run pytest.main() outside of the commandline.
 
 
 
-
-
-
-
-
-
-
-
-
-
+	
 # Data 22 Star Wars Project
 
 ## Instructions

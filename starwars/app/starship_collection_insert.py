@@ -8,11 +8,12 @@ Created on Mon Jun 28 11:21:52 2021
 from starwars.app.starship_connect_objectID_characters import starship_connect_objectID_characters
 import pymongo
 
-# Inserts the formatted swapi starship data into a MongoDB collection.
 
 client = pymongo.MongoClient()
 
 db = client['starwars']
+
+# Inserts the fully formatted swapi starship data into a MongoDB collection.
 
 
 def collection_insert():

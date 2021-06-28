@@ -16,6 +16,9 @@ client = pymongo.MongoClient()
 
 db = client['starwars']
 
+# Further formats the data sent from the swapi by replacing all urls in the
+# "pilots" field with their respective names.
+
 
 def starship_connect_url_characters():
     starship_data = transform_starship_data()
@@ -30,8 +33,9 @@ def starship_connect_url_characters():
 
     return starship_data
 
-# Find associated names for all pilots and replace with their objectIDs from
-# Mongo instead.
+# Uses the formatted "pilots" field from starship_connect_url_characters() to
+# cross reference the "characters" mongoDB database and assign the respective
+# objectID.
 
 
 def starship_connect_objectID_characters():
