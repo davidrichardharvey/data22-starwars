@@ -19,4 +19,3 @@ print(type(res))
 for key, value in res.items():
     print(key)
 
-
