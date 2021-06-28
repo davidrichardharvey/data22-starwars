@@ -13,6 +13,7 @@ def request_url(url):
     # Quick way to get api from url into json format
     return requests.get(url).json()
 
+
 def create_starships_collection():
     # Create the new updated starships collection
     if "starships" not in sw_db.list_collection_names():
@@ -31,6 +32,7 @@ def insert_starships():
     for i in starships_json["results"]:
         ss_name = i["name"]
         sw_db.starships.insert_one(i)
+
         print(f"Inserted document for {ss_name}")
 
 
@@ -45,9 +47,13 @@ def replace_pilot_info():
             # Update query to change the pilots array containing urls to an array containing object ids
             sw_db.starships.update_one({"_id": i["_id"]}, {"$set":{"pilots": pilot_obj_ids}})
 
+            print("Pilots {0} have been updated for the {1} starship".format(", ".join(pilot_names), i["name"]))
 
 
-if __name__ == "__main__":
+def run():
     create_starships_collection()
     insert_starships()
     replace_pilot_info()
+
+if __name__ == "__main__":
+    run()
