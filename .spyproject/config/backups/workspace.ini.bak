@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = empty-project-type
-recent_files = ['starwars\\app\\__init__.py', 'starwars\\tests\\test_inc.py', 'starwars\\app\\inc.py']
+recent_files = ['starwars\\tests\\test_starship_pull_request.py', 'starwars\\app\\starship_pull_request.py', 'starwars\\tests\\run_all_tests.py', 'starwars\\tests\\test_inc.py']
 
 [main]
 version = 0.2.0
