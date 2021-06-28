@@ -39,7 +39,7 @@ def create_pilot_character_list():
             # print('Starship pilots list', starship_pilots)
             pilot_list_ordered.append(starship_pilots) # adds total ship pilot charater data to list
             # print('End\n')
-    # print(pilot_list_ordered)
+    print('Updated pilot list:', pilot_list_ordered)
 
 create_pilot_character_list()
 
@@ -49,6 +49,9 @@ for ship in starships_list:
     pilot_list_ordered.pop(0)
 
 print('Updated starship_list:', starships_list)
+
+url = 'https://swapi.dev/api/people/4/'
+print(type(pilot_api_read(url)))
 
 
 

@@ -21,30 +21,31 @@ def pilot_api_read(pilot_api):
     return requests.get(pilot_api)
 
 
-pilot_list_ordered = []  # ordered list of the pilots, will match original
+pilot_character_ordered = []  # ordered list of the pilots, will match original
 
 
-# loops through to isolate each individual pilot api, calls it and then makes a list of those apis
+# creates an ordered list of the pilot character data. Calls the api url.
 def create_pilot_character_list(pilots):
-    for i in pilots:
-        if not i:  # if no crew
-            pilot_list_ordered.append(i)  # adds empty list
+    for crew in pilots:
+        if not crew:  # if no crew
+            pilot_character_ordered.append('Empty')  # adds empty list
         else:  # if crew
             starship_pilots = []  # creates empty list for each ship
-            for x in i:  # allows for multiple pilots per ship
-                starship_pilots.append(pilot_api_read(x).json())  # adds each pilot character to its ship list
-            pilot_list_ordered.append(starship_pilots)  # adds total ship to ordered list
+            for pilot in crew:  # allows for multiple pilots per ship
+                starship_pilots.append(pilot_api_read(pilot).json())  # adds each pilot character to its ship list
+            pilot_character_ordered.append(starship_pilots)  # adds total ship to ordered list
 
 
-# replaces the starship list pilots urls with the character lists.
+# updates the list of starship pilots urls with the character lists.
 def update_starships(starships):
     for ship in starships:
-        ship['pilots'] = pilot_list_ordered[0]
-        pilot_list_ordered.pop(0)
+        print('Pilot_char_orderd:', pilot_character_ordered[0])
+        ship['pilots'] = pilot_character_ordered[0]
+        pilot_character_ordered.pop(0)
 
 def run_all():
     starships = read_starships_api()
     pilots = create_pilot_list(starships)
     create_pilot_character_list(pilots)
     update_starships(starships)
-    print('Updated startships:', starships)
+    return starships
