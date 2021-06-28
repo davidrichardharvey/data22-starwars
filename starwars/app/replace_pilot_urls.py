@@ -13,8 +13,6 @@ def replace_pilot_urls():
             starwars_db.starships.update_one({"_id": starship["_id"]}, {"$set": {"pilots": pilot_ids}})
 
 
-# replace_pilot_urls()
-
 # Here is the aggregate function to show the changes, when run in the mongodb shell:
 
 # db.starships.aggregate([

@@ -1,6 +1,6 @@
 # creating a function to insert the starships into the collection on mongodb
-from read_starships_api import *
-from create_starships_collection import *
+from starwars.app.read_starships_api import *
+from starwars.app.create_starships_collection import *
 
 starships = starwars_db["starships"]
 
@@ -31,4 +31,3 @@ def insert_starships():
         print("Inserted page 4 documents into starship collection")
 
 
-insert_starships()

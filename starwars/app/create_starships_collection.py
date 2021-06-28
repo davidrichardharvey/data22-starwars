@@ -1,6 +1,5 @@
 import pymongo
-import requests
-from pprint import pprint
+
 
 client = pymongo.MongoClient()
 starwars_db = client['starwars']
@@ -12,4 +11,4 @@ def create_starships_collection():
     return starships
 
 
-print(type(create_starships_collection()))
+# print(type(create_starships_collection()))

@@ -10,4 +10,4 @@ def call_starships_api():
     return response1, response2, response3, response4
 
 
-print(call_starships_api())
+# print(call_starships_api())
