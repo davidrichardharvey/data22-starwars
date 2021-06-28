@@ -7,12 +7,14 @@ starships_req = requests.get("https://swapi.dev/api/starships")
 # print("json", starships_req.json())
 # print("Type", type(starships_req.json()))
 starships = starships_req.json()["results"]  # isolates just the data and not other details like count
+print('Starships', starships)
+print('Type', type(starships))
 
 starships_list = [i for i in starships] # list of each starship dictionary
 print('Starship list', starships_list)
 
 pilots = [i['pilots'] for i in starships_list]  # list of each ships pilots
-# print('Pilots', pilots)
+print('Pilots', pilots)
 
 # takes in pilot api address and outputs content
 def pilot_api_read(pilotapi):
