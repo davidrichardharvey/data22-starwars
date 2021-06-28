@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from starwars.app.starship_pull_request import status_code
-from starwars.app.starship_pull_request import pull_starship_data
+from starwars.app.starship_pull_request import transform_starship_data
 """
 Created on Sun Jun 27 18:14:05 2021
 
@@ -15,8 +15,7 @@ def test_starship_pull_request():
 
     assert status_code() == 200
 
-    # Test that the starship pull request has pulled all the correct data by
-    # checking if the list of dictionaries is 4 values in length, meaning it
-    # has correctly stored all 4 pages of the swapi starship data.
+    # Test that asserts whether the data pulled from the swapi website has
+    # been correctly pulled and formatted in a 36 length list of dictionaries.
 
-    assert len(pull_starship_data()) == 4
+    assert len(transform_starship_data()) == 36
