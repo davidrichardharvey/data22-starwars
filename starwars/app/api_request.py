@@ -1,10 +1,7 @@
 import requests
-from pprint import pprint
 
 
 def api_request(url):
+    # Calls the information from the stated url
     starships = requests.get(url)
     return starships
-
-
-
