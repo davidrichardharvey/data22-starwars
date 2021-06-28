@@ -5,25 +5,27 @@ client = pymongo.MongoClient()
 db = client['starwars']
 
 
+# A function that deletes any previous starship documents from the database
+def delete_old_collection():
+    db.starships.drop()
+
+
 class ExtractStarships:
 
     def __init__(self):
-        self.s_ships = None
+        self.page_data = None  # A variable that with temporarily hold data from each page
         self.url = "https://swapi.dev/api/starships/?page="
-        # An empty list for all starships
-        self.total_results = []
-        self.page_count = 1
-        self.pilots = None
+        self.total_starships = []  # A list that will contain ALL starships
+        self.page_count = 1  # Page count with increase dependant on the number of pages from root
+        self.pilots = None  # A variable that will hold starships WITH pilots
 
-    def delete_old_collection(self):
-        db.starships.drop()
-
+    # A function that find the total number of pages for the following function
     def find_page_count(self):
         response = requests.get(self.url)
-        self.s_ships = response.json()
-        while self.s_ships['next'] is not None:
-            response = requests.get(self.s_ships['next'])
-            self.s_ships = response.json()
+        self.page_data = response.json()
+        while self.page_data['next'] is not None:
+            response = requests.get(self.page_data['next'])
+            self.page_data = response.json()
             self.page_count += 1
         return self.page_count
 
@@ -32,11 +34,11 @@ class ExtractStarships:
         for page in range(1, self.page_count + 1):
             url = self.url + str(page)
             response = requests.get(url)
-            self.s_ships = response.json()
-            self.total_results = self.total_results + self.s_ships['results']
+            self.page_data = response.json()
+            self.total_starships = self.total_starships + self.page_data['results']
 
-        return self.total_results
+        return self.total_starships
 
-    def get_ships_pilot(self):
-        self.pilots = [i for i in self.total_results if not (i['pilots'] == [])]
-        # print(self.pilots)
+    # A function that gets starships with pilots only
+    def get_ships_with_pilots(self):
+        self.pilots = [i for i in self.total_starships if not (i['pilots'] == [])]
