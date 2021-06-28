@@ -4,6 +4,7 @@ from starwars.app.pilot_api_reader import *
 starships = starwars_db["starships"]
 characters = starwars_db["characters"]
 
+
 # this function replaces the pilot urls with the matching pilot object IDs
 def replace_pilot_urls():
     # this finds all of the starships documents in the starships collection
@@ -16,7 +17,6 @@ def replace_pilot_urls():
             pilot_ids = [next(characters.find({"name": name}))["_id"] for name in pilot_names]
             # This updates the starships collection, replacing the urls with the corresponding pilot ObjectIDs
             starwars_db.starships.update_one({"_id": starship["_id"]}, {"$set": {"pilots": pilot_ids}})
-
 
 # Here is the aggregate function to show the changes, when run in the mongodb shell,
 # This matches the pilot ObjectIDs with the names of the pilots, and prints the names:
