@@ -18,11 +18,6 @@ def insert_starships_info():
     return db['starships']
 
 
-# drop_starships_collection()
-# create_starships_collection()
-# insert_starships_info()
-
-
 def get_persons_objectid():
     people = db.characters.find()
     peoples_ids_dict = {}
@@ -34,7 +29,6 @@ def get_persons_objectid():
 
 
 peoples_ids_dict = get_persons_objectid()
-print(peoples_ids_dict)
 
 
 def replace_url_with_name():
@@ -54,10 +48,6 @@ def replace_url_with_name():
     return db['starships']
 
 
-# pilots_names_on_ships = replace_url_with_name()
-# print(pilots_names_on_ships)
-
-
 def replace_name_with_id():
     for ships in db['starships'].find():
         ships_name = ships['name']
@@ -73,7 +63,3 @@ def replace_name_with_id():
             db.starships.update_one({'name': ships_name}, update)
 
     return db['starships']
-
-
-pilots_ids_on_ships = replace_name_with_id()
-print(pilots_ids_on_ships)
