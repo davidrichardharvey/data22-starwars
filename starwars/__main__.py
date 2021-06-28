@@ -1,5 +1,6 @@
 from starwars.app.api_read import *
 from starwars.app.obtain_objectID import *
+from starwars.app.collections_mongodb import *
 
 if __name__ == '__main__':
     # read each page of the starships data
@@ -25,7 +26,16 @@ if __name__ == '__main__':
     obj_id = obtain_object_id()
 
     # creating a dictionary where the key is character name and value is objectID
-    create_character_dict(char_name, obj_id)
+    character_dict = create_character_dict(char_name, obj_id)
 
     # change all character names to objectID within pilots
-    # replace_character_name_for_object_id(all_starship_data_names, character_dict)
+    starship_data_with_object_id = replace_character_name_for_object_id(all_starship_data_names, character_dict)
+
+    # drop collection to ensure it does not already exist
+    drop_collection("starships")
+
+    # create a new collection called "starships"
+    newcoll = create_new_collection("starships")
+
+    # populate new collection with the data on starships
+    add_to_collection(newcoll, starship_data_with_object_id)

@@ -9,11 +9,23 @@ def test_read_from_api():
     assert read_api(starships_url_4).status_code == 200
 
 
+starships_1 = read_api(starships_url_1)
+starships_2 = read_api(starships_url_2)
+starships_3 = read_api(starships_url_3)
+starships_4 = read_api(starships_url_4)
+
+
 def test_create_list_of_dict():
     assert type(create_list_of_dict(read_api(starships_url_1))) is list
     assert type(create_list_of_dict(read_api(starships_url_2))) is list
     assert type(create_list_of_dict(read_api(starships_url_3))) is list
     assert type(create_list_of_dict(read_api(starships_url_4))) is list
+
+
+starships_1_list = create_list_of_dict(starships_1)
+starships_2_list = create_list_of_dict(starships_2)
+starships_3_list = create_list_of_dict(starships_3)
+starships_4_list = create_list_of_dict(starships_4)
 
 
 def test_merge_list_of_dict():
@@ -24,12 +36,18 @@ def test_merge_list_of_dict():
     assert len(merge_lists_of_dicts(dict1, dict2, dict3, dict4)) == 8
 
 
+all_starship_data = merge_lists_of_dicts(starships_1_list, starships_2_list, starships_3_list, starships_4_list)
+
+
 def test_change_pilot_to_character_name():
-   assert change_pilot_to_character_name(all_starship_data)[4]["pilots"][1] == "Han Solo"
+    assert change_pilot_to_character_name(all_starship_data)[4]["pilots"][1] == "Han Solo"
+
+
+all_starship_data_names1 = change_pilot_to_character_name(all_starship_data)
+obj = obtain_object_id()
+char = obtain_character_name()
+character_dict1 = create_character_dict(char, obj)
 
 
 def test_replace_character_name_with_object_id():
-   assert replace_character_name_for_object_id(all_starship_data_names1, character_dict1)[4]["pilots"][1] == character_dict1["Han Solo"]
-
-
-
+    assert str(replace_character_name_for_object_id(all_starship_data_names1, character_dict1)[4]["pilots"][1]) == str(character_dict1["Han Solo"])
