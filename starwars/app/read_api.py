@@ -1,12 +1,19 @@
 import requests
 from pprint import pprint
 
+# Function that reads the starships collection and displays it in PyCharm.
+def read_api_page_one():
+    response_page1 = requests.get("https://swapi.dev/api/starships")
+    return response_page1.json()
 
-def read_api():
-    response_one = requests.get("https://swapi.dev/api/starships")
-    response_two= requests.get("https://swapi.dev/api/starships/?page=2")
-    response_three = requests.get("https://swapi.dev/api/starships/?page=3")
-    response_four = requests.get("https://swapi.dev/api/starships/?page=4")
-    return response_one.json(), response_two.json(), response_three.json(), response_four.json()
+def read_api_page_two():
+    response_page2 = requests.get("https://swapi.dev/api/starships/?page=2")
+    return response_page2.json()
 
-pprint(type(read_api()))
+def read_api_page_three():
+    response_page3 = requests.get("https://swapi.dev/api/starships/?page=3")
+    return response_page3.json()
+
+def read_api_page_four():
+    response_page4 = requests.get("https://swapi.dev/api/starships/?page=4")
+    return response_page4.json()
