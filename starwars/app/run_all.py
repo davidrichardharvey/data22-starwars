@@ -1,4 +1,4 @@
-from api_request import *
+from api_request import get_all_pages_starships
 from sw_mongo import *
 from pprint import pprint
 

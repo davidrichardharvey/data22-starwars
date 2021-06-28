@@ -1,5 +1,4 @@
 import requests
-from pprint import pprint
 
 
 def api_call():
@@ -43,7 +42,7 @@ def get_all_people():
     for person in range(83):
         # get all information from all people
         response = requests.get("https://swapi.dev/api/people/" + str(person) + '/', headers=headers)
-        response_json = response.json()  # starships in JSON format
+        response_json = response.json()  # people's details in JSON format
         if response_json.get('detail') == 'Not found':
             pass
         else:
