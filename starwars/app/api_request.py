@@ -14,19 +14,57 @@ def get_starships():
     return response_json
 
 
-# pprint(get_starships()['results'])
-
-
 def get_all_pages_starships():
     headers = {'Content-Type': 'application/json'}
     ships_list = []
     for ship in range(76):
-        response = requests.get("https://swapi.dev/api/starships/" + str(ship) + '/', headers=headers)
         # get all information from all starships
+        response = requests.get("https://swapi.dev/api/starships/" + str(ship) + '/', headers=headers)
         response_json = response.json()  # starships in JSON format
         if response_json.get('detail') == 'Not found':
             pass
         else:
             ships_list.append(response_json)  # add starship's dictionary of details into list: ships_list
-    print(len(ships_list))
     return ships_list
+
+
+def get_ships_pilots():
+    ships_list = get_all_pages_starships()  # list of dictionaries of details for all starships
+    ships_pilots_dict = {}  # dictionary: {ship's name: list of ship's pilots}
+    for ship in ships_list:
+        ship_name = ship['name']
+        # add a key-value pair to ships_pilots_dict. {ship's name: empty list of pilots}
+        ships_pilots_dict[ship_name] = []
+        if ship['pilots'] == []:  # if ship has no pilots, pass
+            pass
+        else:
+            ship_pilots = ship['pilots']
+            # update key-value pair in ships_pilots_dict to {ship's name: list of pilots}
+            ships_pilots_dict[ship_name] = ship_pilots
+    return ships_pilots_dict  # return dictionary of ships with list of pilots for each ship
+
+
+def get_all_people():
+    headers = {'Content-Type': 'application/json'}
+    people_list = []
+    for person in range(83):
+        # get all information from all people
+        response = requests.get("https://swapi.dev/api/people/" + str(person) + '/', headers=headers)
+        response_json = response.json()  # starships in JSON format
+        if response_json.get('detail') == 'Not found':
+            pass
+        else:
+            people_list.append(response_json)  # add person's dictionary of details into list: people_list
+    return people_list
+
+
+def get_peoples_url():
+    list_of_people = get_all_people()  # list of dictionaries of details for all people
+    peoples_url_dict = {}  # dictionary: {person's name: peron's url}
+    for person in list_of_people:
+        person_name = person['name']
+        persons_url = person['url']
+        # add a key-value pair in peoples_url_dict: {person's name: person's url}
+        peoples_url_dict[person_name] = persons_url
+    return peoples_url_dict  # return dictionary of people with their name and url string for each person
+
