@@ -12,6 +12,8 @@ def obtain_object_id():
     return objectID
 
 
+
+
 def obtain_character_name():
     character_name = []
     people = db.characters.find()
@@ -19,9 +21,11 @@ def obtain_character_name():
         character_name.append(person["name"])
     return character_name
 
+obj = obtain_object_id()
+char = obtain_character_name()
 
 def create_character_dict(character_name, objectID):
-    character_dict = {character_name()[i]: objectID()[i] for i in range(len(character_name()))}
-    return character_dict
+    character_dict1 = {character_name[i]: objectID[i] for i in range(len(character_name))}
+    return character_dict1
 
-
+character_dict1 = create_character_dict(char, obj)

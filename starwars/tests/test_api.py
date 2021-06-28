@@ -1,4 +1,5 @@
 from starwars.app.api_read import *
+from starwars.app.obtain_objectID import *
 
 
 def test_read_from_api():
@@ -25,3 +26,10 @@ def test_merge_list_of_dict():
 
 def test_change_pilot_to_character_name():
    assert change_pilot_to_character_name(all_starship_data)[4]["pilots"][1] == "Han Solo"
+
+
+def test_replace_character_name_with_object_id():
+   assert replace_character_name_for_object_id(all_starship_data_names1, character_dict1)[4]["pilots"][1] == character_dict1["Han Solo"]
+
+
+

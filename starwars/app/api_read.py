@@ -43,4 +43,16 @@ def change_pilot_to_character_name(all_starships):
             ship["pilots"][pilot_index] = requests.get(pilot).json()["name"]
     return all_starships
 
+all_starship_data_names1 = change_pilot_to_character_name(all_starship_data)
+
+
+def replace_character_name_for_object_id(all_starships, character_dict):
+    for ship in all_starships:
+        for pilot in ship["pilots"]:
+            for name, objectID in character_dict.items():
+                if pilot == name:
+                    pilot_index = ship["pilots"].index(pilot)
+                    ship["pilots"][pilot_index] = character_dict[name]
+    return all_starships
+
 
