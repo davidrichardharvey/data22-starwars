@@ -7,13 +7,6 @@ def api_call():
     return starships_api.status_code  # successful status code = 200
 
 
-def get_starships():
-    headers = {'Content-Type': 'application/json'}
-    response = requests.get("https://swapi.dev/api/starships/", headers=headers)  # get all information from starships
-    response_json = response.json()  # starships in JSON format
-    return response_json
-
-
 def get_all_pages_starships():
     headers = {'Content-Type': 'application/json'}
     ships_list = []
@@ -60,11 +53,13 @@ def get_all_people():
 
 def get_peoples_url():
     list_of_people = get_all_people()  # list of dictionaries of details for all people
-    peoples_url_dict = {}  # dictionary: {person's name: peron's url}
+    peoples_url_dict = {}  # dictionary: {peron's url: person's name}
     for person in list_of_people:
-        person_name = person['name']
         persons_url = person['url']
-        # add a key-value pair in peoples_url_dict: {person's name: person's url}
-        peoples_url_dict[person_name] = persons_url
+        persons_name = person['name']
+        # add a key-value pair in peoples_url_dict: {person's url: person's name}
+        peoples_url_dict[persons_url] = persons_name
     return peoples_url_dict  # return dictionary of people with their name and url string for each person
 
+
+people_url_dict = get_peoples_url()
