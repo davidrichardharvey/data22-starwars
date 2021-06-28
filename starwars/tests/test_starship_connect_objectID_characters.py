@@ -40,7 +40,7 @@ def test_starship_connect_url_characters():
 
 # Tests that the pilot object ids are in the list of object ids from the
 # characters database.
-def test_starship_connect_objectID_character():
+def test_starship_connect_objectID_characters():
     
     characters = db.char_demo.find({}, {"name": 1, "_id": 1}) 
     
