@@ -5,5 +5,5 @@ db = client['starwars']
 
 
 def db_drop():
-    db.starwars.starships.drop()
-    return [ship for ship in db.starwars.starships.find()]
+    db.starships.drop()
+    return [ship for ship in db.starships.find()]
