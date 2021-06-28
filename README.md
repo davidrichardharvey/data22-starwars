@@ -1,4 +1,8 @@
-# Data 22 Star Wars Project
+# Data 22 Star Wars Project (Ola Ajayi)
+
+## Trello Board
+Please find attached, a link to my Trello Board.
+https://trello.com/b/wZoDICVd/data-22-star-wars-project
 
 ## Instructions
 
@@ -26,3 +30,4 @@ You have until 9am on Tuesday.
 - Make sure you commit and push to the remote repo frequently to keep your work up-to-date.
 - The gitignore should catch most unnecessary project files, but do pay attention to what you are adding to the repo.
 - Replace this README with an appropriate README for your project (including a link to your job board).
+
