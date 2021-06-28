@@ -12,4 +12,3 @@ def starships_update(requested_data):
     return [ship for ship in ships]
 
 
-print(len(starships_update(api_request())))
