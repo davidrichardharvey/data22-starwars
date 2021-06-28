@@ -26,3 +26,6 @@ You have until 9am on Tuesday.
 - Make sure you commit and push to the remote repo frequently to keep your work up-to-date.
 - The gitignore should catch most unnecessary project files, but do pay attention to what you are adding to the repo.
 - Replace this README with an appropriate README for your project (including a link to your job board).
+
+## Trello board
+- https://trello.com/invite/b/7ASaoWa2/d116d4a40d260159554c9ec6d70b4066/project-2-matthew-brackenbury
