@@ -1,5 +1,6 @@
-My job board --> https://trello.com/b/0VLCxBpJ/mini-project
-Review --> I didn't use the characters collection. I used the api to retrieve the character object id's
+My job board --> https://trello.com/b/0VLCxBpJ/mini-project 
+
+Review --> I didn't use the characters collection. I used the api to retrieve the character object id's. This is not the correct method. 
 
 # Data 22 Star Wars Project
 
