@@ -4,6 +4,10 @@
 Please find attached, a link to my Trello Board.
 https://trello.com/b/wZoDICVd/data-22-star-wars-project
 
+## Instructions To Running My Code
+My entire main code can be run from the __main__.py file. 
+All 3 tests can be run using the terminal and by typing in "pytest". 
+
 ## Instructions
 
 The character data in your MongoDB database has been pulled from https://swapi.dev/.
