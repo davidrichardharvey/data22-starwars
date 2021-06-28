@@ -1,10 +1,11 @@
 from starwars.app.read_starships_api import *
 
 
-# ModuleNotFoundError - starwars is not a module name - fixed by opening data22-starwars in pycharm, rather than starwars
+# ModuleNotFoundError - starwars is not a module name
+# fixed by opening data22-starwars in pycharm, rather than starwars
 
 
-# test to see whether the function prints the starships information as a dictionary
+# test to see whether the functions print the starships information as a dictionary
 def test_read_starships_api_page1():
     assert str(type(read_starships_api_page1())) == "<class 'dict'>"
 
