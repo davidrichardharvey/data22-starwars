@@ -12,4 +12,4 @@ def starships_update(requested_data):
     return [ship for ship in ships]
 
 
-pprint([ship for ship in db.starships.find()])
+
