@@ -1,9 +1,6 @@
 import pymongo
 from bson.objectid import ObjectId
-from add_collection_to_mongo import *
-
-import pymongo
-from bson.objectid import ObjectId
+from starwars.app.read_api import *
 
 # Function that will add the starships collection to MongoDB
 client = pymongo.MongoClient()
@@ -16,13 +13,16 @@ def insert_starships():
     sw_starships_two = read_api_page_two()
     sw_starships_three = read_api_page_three()
     sw_starships_four = read_api_page_four()
-    for i in sw_starships_one['results']:
-        starwars_db.starships.insertOne(i)
-    for i in sw_starships_two['results']:
-        starwars_db.starships.insertOne(i)
-    for i in sw_starships_three['results']:
-        starwars_db.starships.insertOne(i)
-    for i in sw_starships_four['results']:
-        starwars_db.starships.insertOne(i)
+    if 'starships' not in starwars_db.list_collection_names():
+        for i in sw_starships_one['results']:
+            starwars_db.starships.insert_one(i)
+        for i in sw_starships_two['results']:
+            starwars_db.starships.insert_one(i)
+        for i in sw_starships_three['results']:
+            starwars_db.starships.insert_one(i)
+        for i in sw_starships_four['results']:
+            starwars_db.starships.insert_one(i)
+    else:
+        starships.drop()
 
-insert_starships()
+# insert_starships()
