@@ -1,4 +1,4 @@
-from starwars.app.api_read import read_api, create_dict
+from starwars.app.api_read import *
 
 def test_read_from_api():
     assert read_api() == "<Response [200]>"
