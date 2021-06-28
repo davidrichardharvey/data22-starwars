@@ -1,5 +1,5 @@
 import pymongo
-from app.api_request import api_request
+from starwars.app.api_request import api_request
 
 client = pymongo.MongoClient()
 db = client['starwars']
@@ -11,3 +11,5 @@ def starships_update(requested_data):
     ships = db.starwars.starships.find()
     return [ship for ship in ships]
 
+
+print(len(starships_update(api_request())))
