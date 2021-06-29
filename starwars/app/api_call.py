@@ -1,38 +1,42 @@
-import requests
-import json
-
-# https://swapi.dev/api/starships/?page=1&format=json
-# https://swapi.dev/api/starships/?page=2&format=json
-# https://swapi.dev/api/starships/?page=3&format=json
-# https://swapi.dev/api/starships/?page=4&format=json
-# update read me,
 # input request test is fine
-# make sure collection is empty
 
-response = requests.get("https://swapi.dev/api/people/?format=json")
-response1 = requests.get("https://swapi.dev/api/starships/?page=1&format=json")    # 13, 14, 25, 31, 1, 9, 18, 19, 4
-response2 = requests.get("https://swapi.dev/api/starships/?page=2&format=json")    # 22, 1, 13, 14, 29, 11, 35, 60, 39
-response3 = requests.get("https://swapi.dev/api/starships/?page=3&format=json")    # 44, 10, 58, 35, 10, 11
-response4 = requests.get("https://swapi.dev/api/starships/?page=4&format=json")    # 10, 35, 10, 11, 10, 79,
-
-data = response1.text
-parse = json.loads(data)
-# print(parse)
-# print(type(parse))
-# print(response.status_code)
-
-# y = parse["results"]
-# for item in y:
-#     if item["starships"]:  # show only available starships
-#         print(item["name"], item["starships"])
-
-y = parse["results"]
-for item in y:
-    if item["name"]:  # show only available starships
-        print({item["name"]: item["pilots"]})
+import json
+import requests
+import pymongo
 
 
-# As a user I want to replace all "pilots" keys with a list of ObjectIDs from characters collection
-# return all pilots keys
-# get all ObjectIDs
-# create a list of ObjectIDs form characters collection
+# Connect to MongoDB and select database
+client = pymongo.MongoClient()
+db = client["starwars"]
+
+
+# Test to ensure requests are successful from the API
+def api_call(url):
+    response = requests.get(url)
+    return response
+
+
+# Return all the results from all the pages
+# Create a list of all results
+# Return format [{}]
+data_list = []
+
+
+def api_request():
+    total_results = []
+    for page_number in range(1, 5):
+        url = "https://swapi.dev/api/starships/?page="
+        response = requests.get(url + str(page_number)).text
+        response_data = json.loads(response)
+        total_results = total_results + response_data["results"]
+        for result in range(len(response_data["results"])):
+            data_list.append(response_data["results"][result])
+
+    return data_list
+
+
+print(api_request())
+
+
+def url_request(response):
+    return requests.get(response).json()
