@@ -15,5 +15,9 @@ def test_read_mongodb():
     assert type(find_with_id['_id']) == bson.objectid.ObjectId
 
 
+def test_starship_update():
+    # Test to ensure pilot field is updated within MongoDB with pilot ObjectId
+    ship = db.starships.find_one({'name': 'Millennium Falcon'}, {'_id': 0})['pilots']
+    assert type(ship[0]) == bson.objectid.ObjectId
 
 
